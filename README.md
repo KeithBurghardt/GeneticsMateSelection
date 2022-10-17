@@ -11,6 +11,28 @@
 - prs_score.py: the Slice Polygeneic Relationship Score (SliPRS) for each pair of participants
 
 
+## Software requirements
+
+###The following software were used for data analysis:
+- Python version 3.7.6 
+- R version 4.0.0
+
+###The following packages were used for data analysis: 
+Python packages:
+- os,random,glob,pickle,multiprocessing (packages come with Python)
+- numpy 1.21.4
+- pandas 1.0.5
+- scipy 1.2.0
+
+
+pandas 0.25.1, scipy 1.3.1, numpy 1.17.2, matplotlib 3.1.1 and argparse 1.1 (https://anaconda.com); R version 4.0.3 with packages EasyQC 9.2, plotrix 3.7.8, tidyr 1.1.3 and readstata13 0.9.2, and R version 3.6 with packages ggplot2 3.3 and fmsb 0.7 (https://www.r-project.org); GCTA 1.93.2beta (https://yanglab.westlake.edu.cn/software/gcta/#Overview); GCTB 2.03 (https://cnsgenomics.com/software/gctb/#Overview); Stata 16.1 (https://www.stata.com); Plink1.9 (https://www.cog-genomics.org/plink/1.9); Plink2 (https://www.cog-genomics.org/plink/2.0); LDpred 1.0.11 (https://github.com/bvilhjal/ldpred); METAL release 2011-03-25 (https://genome.sph.umich.edu/wiki/METAL_Documentation); BOLT-LMM 2.3 (https://alkesgroup.broadinstitute.org/BOLT-LMM/BOLT-LMM_manual.html); LDSC 1.0.1 (https://github.com/bulik/ldsc); and SNIPar (https://github.com/AlexTISYoung/SNIPar/tree/EA4).
+
+
+R packages:
+- (logistf)[https://cran.r-project.org/web/packages/logistf/index.html] 1.24.1
+- data.table (package comes with R)
+
+
 ## License
 
 The project is licensed under the [BSD 3-Clause license](https://github.com/pysal/spaghetti/blob/main/LICENSE.txt).
