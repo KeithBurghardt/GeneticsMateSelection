@@ -13,11 +13,11 @@
 
 ## Software requirements
 
-###The following software were used for data analysis:
+### The following software were used for data analysis:
 - Python version 3.7.6 
 - R version 4.0.0
 
-###The following packages were used for data analysis: 
+### The following packages were used for data analysis: 
 Python packages:
 - os,random,glob,pickle,multiprocessing (packages come with Python)
 - numpy 1.21.4
