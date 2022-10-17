@@ -1,14 +1,11 @@
 import numpy as np
 import pandas as pd
 import pickle as pk
-import os,time,sys
+import os
 from glob import glob
 import random
-from itertools import permutations,combinations
-from more_itertools import consume
 from multiprocessing import Pool
-import warnings
-import firth
+
 
 
 def find_sex(df_pca,IDs):
