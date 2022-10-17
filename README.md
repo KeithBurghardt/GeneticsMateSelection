@@ -19,10 +19,10 @@
 
 ### The following packages were used for data analysis: 
 Python packages:
-- os,random,glob,pickle,multiprocessing (packages come with Python)
 - [numpy](https://numpy.org/) 1.21.4
 - [pandas](https://pandas.pydata.org/) 1.0.5
 - [scipy](https://scipy.org/) 1.2.0
+- os,random,glob,pickle,multiprocessing (packages come with Python)
 
 R packages:
 - [logistf](https://cran.r-project.org/web/packages/logistf/index.html) 1.24.1
