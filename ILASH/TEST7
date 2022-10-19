@@ -1,8 +1,3 @@
 map /project/burghard_687/genetic_data/phased_data/chr7_imputed.map
 ped /project/arpawong_181/HRS_AsMa/keith/phased/chr7.ped
-output /project/burghard_687/genetic_data/ILASH_output/dist_hrs_7_1cm
-min_length 1.0
-slice_length 1.0
-cm_overlap 0.5
-minhash_threshold 30
-shingle_overlap 10
+output /project/burghard_687/genetic_data/ILASH_output/dist_hrs_7
