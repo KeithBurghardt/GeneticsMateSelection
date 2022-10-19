@@ -4,12 +4,16 @@
 - Analyze Data: this is code to extract features and find the Firth logistic regression for each genetic slice. The code is decribed in more detail below
 
 ## Code to analyze data (Analyze Data folder)
-- plink_commands.bash: PLINK commands for phasing, eigenvectors (for principle component analysis), and centimorgan mapping and imputation
+Python code
 - create_pairwise_features.py: This code extracts features from pairs of participants.
 - covariates.py: This code finds the correlations between features for each married participant, and creates some of the plots in the paper, such as PCA embeddings of participants and mean PC distance between married and random participants.
 - prepare_firth_regression.py: This code collects and cleans pairwise features extracted in create_pairwise_features.py. This cleaned data is fed into firth_fit.r, which is run through this code
-- firth_fit.r: This code extracts logistic regression coefficients and p-values for each slice, both with and without controlling for covariates. 
 - prs_score.py: the Slice Polygeneic Relationship Score (SliPRS) for each pair of participants
+
+R code
+- bp2cm.r: This code fills in any missing centimorgan values via imputation
+- pca.r: This code determines PCA components from genome data
+- firth_fit.r: This code extracts logistic regression coefficients and p-values for each slice, both with and without controlling for covariates. 
 
 ## Software requirements
 
@@ -27,7 +31,11 @@ Python packages:
 
 R packages:
 - [logistf](https://cran.r-project.org/web/packages/logistf/index.html) 1.24.1
-- data.table (package comes with R)
+- [SNPRelate](http://www.bioconductor.org/packages/release/bioc/html/SNPRelate.html) 1.23.1
+- [gdsfmt](https://bioconductor.org/packages/release/bioc/html/gdsfmt.html) 1.26.1
+- [devtools](https://www.r-project.org/nosvn/pandoc/devtools.html) 2.3.1
+- [usethis](https://cran.r-project.org/web/packages/usethis/index.html) 1.6.1  
+- [data.table](https://rdatatable.gitlab.io/data.table/) 1.13.0 
 
 
 
