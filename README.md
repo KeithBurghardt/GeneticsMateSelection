@@ -4,18 +4,19 @@
 - Analyze Data: this is code to extract features and find the Firth logistic regression for each genetic slice. The code is decribed in more detail below
 
 ## Code to analyze data (Analyze Data folder)
+- plink_commands.bash: PLINK commands for phasing, eigenvectors (for principle component analysis), and centimorgan mapping and imputation
 - create_pairwise_features.py: This code extracts features from pairs of participants.
 - covariates.py: This code finds the correlations between features for each married participant, and creates some of the plots in the paper, such as PCA embeddings of participants and mean PC distance between married and random participants.
 - prepare_firth_regression.py: This code collects and cleans pairwise features extracted in create_pairwise_features.py. This cleaned data is fed into firth_fit.r, which is run through this code
 - firth_fit.r: This code extracts logistic regression coefficients and p-values for each slice, both with and without controlling for covariates. 
 - prs_score.py: the Slice Polygeneic Relationship Score (SliPRS) for each pair of participants
 
-
 ## Software requirements
 
 ### The following software were used for data analysis:
 - Python version 3.7.6 
 - R version 4.0.0
+- PLINK version 1.07
 
 ### The following packages were used for data analysis: 
 Python packages:
@@ -27,6 +28,8 @@ Python packages:
 R packages:
 - [logistf](https://cran.r-project.org/web/packages/logistf/index.html) 1.24.1
 - data.table (package comes with R)
+
+
 
 
 ## License
