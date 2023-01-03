@@ -16,3 +16,10 @@ All features are extracted from the GWAS catalog, e.g., https://www.ebi.ac.uk/gw
      - bp: basepair position
      - base: shared allele between married respondents
 
+- Code used in this analysis:
+  - find_slices.py uses study_slices.py to find the common SNPs
+  - SNP names come from: 'https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=1319403889_9EQurcZePlSE3YnxbtdlokRG59T0&clade=mammal&org=Human&db=hg19&hgta_group=varRep&hgta_track=knownGene&hgta_table=0&hgta_regionType=range&position=chr'+chrom+'%3A'+http_bp1+'-'+http_bp2+'&hgta_outputType=primaryTable&hgta_outFileName='+new_slice+'.csv'
+  Replace chrom with the slice chromosome, and new_slice with the slice of the form [Chromosome]_[basepair position start]-[basepair position end], e.g., 10_122598339-123215850
+  http_bp1 = '%2C'.join([bp1[::-1][i:i+n][::-1] for i in range(0,len(bp1), n)][::-1])
+  http_bp2 = '%2C'.join([bp2[::-1][i:i+n][::-1] for i in range(0,len(bp2), n)][::-1])
+  - SNP trait data comes from: 'https://www.ebi.ac.uk/gwas/regions/chr'+new_slice.replace('_',':')  
