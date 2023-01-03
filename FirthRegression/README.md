@@ -8,4 +8,5 @@ Each file will have the following columns:
 - bp1: beginning basepair of slice 
 - bp2: end basepair of slice	
 - (Intercept): p-value or coefficient of intercept of Firth logistic regression	
+- [Covariates]: p-value or coefficient of any covariates in the Firth logistic regression
 - slice: p-value or coefficient of slice with Firth logistic regression
