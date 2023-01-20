@@ -1,6 +1,6 @@
 # interpolation inspired by https://www.biostars.org/p/16236/
-# Note we need a marey map to convert from bp to cm
-# MM uses ~1000 known relations (note these differ from men and women; we average the differences for now)
+# Note we need a Marey map to convert from bp to cm
+# MM uses ~1000 known relations (note these differ from men and women; we average the differences for simplicity)
 # interpolate with a number of methods, I use spline, use "plot(map)" to show fit
 
 library(MareyMap)
@@ -17,7 +17,6 @@ for (ch in c(1:22)){
 	itr <- MMSpline3()
 	human_chr <- human_chr + itr
 	interpolation <- (interpolations(human_chr)$spline)@model
-        #print(predict(interpolation,chr_data[,4]))
 	chr_data[,3] <- predict(interpolation,chr_data[,4])$y
         write.table(chr_data, file = out_file,row.names = FALSE,col.names=FALSE,quote = FALSE,sep="\t")
 }
