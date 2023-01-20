@@ -11,7 +11,7 @@ Python code
 - prs_score.py: the Slice Polygeneic Relationship Score (SliPRS) for each pair of participants
 
 R code
-- bp2cm.r: This code fills in any missing centimorgan values via imputation
+- bp2cm.r: This code recreates cM values for each SNP and fills in any missing centimorgan values via imputation
 - pca.r: This code determines PCA components from genome data
 - firth_fit.r: This code extracts logistic regression coefficients and p-values for each slice, both with and without controlling for covariates. 
 
