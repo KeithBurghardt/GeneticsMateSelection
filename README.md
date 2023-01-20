@@ -48,8 +48,8 @@ The project is licensed under the [BSD 3-Clause license](https://github.com/pysa
 
 ## BibTeX Citation
 ```
-@article{Burghardt2022,
-    year      = {2022},
+@article{Burghardt2023,
+    year      = {2023},
     publisher = {},
     author    = {Keith Burghardt and Thalida Em Arpawong and José Luis Ambite},
     title     = {Shared Genetics Drive Mate Selection},
