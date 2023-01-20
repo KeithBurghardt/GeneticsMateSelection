@@ -15,8 +15,6 @@ R code
 - pca.r: This code determines PCA components from genome data
 - firth_fit.r: This code extracts logistic regression coefficients and p-values for each slice, both with and without controlling for covariates. 
 
-## Binomial probabilities to calculate significant slices (BinomialNullModel)
-- 
 
 ## Firth Logistic Regression Results (FirthRegression)
 These are all coefficients and p-values of Firth logistic regression for each slice
