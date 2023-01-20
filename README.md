@@ -16,15 +16,6 @@ R code
 - firth_fit.r: This code extracts logistic regression coefficients and p-values for each slice, both with and without controlling for covariates. 
 
 
-## Firth Logistic Regression Results (FirthRegression)
-These are all coefficients and p-values of Firth logistic regression for each slice
-
-- p-value files are of the form: firth_[coefficient added]_prob_full_fold=0_abs_no_cog-bmi_cog27.csv
-- Coefficient files are of the form: firth_[coefficient added]_coefs_full_fold=0_abs_no_cog-bmi_cog27.csv
-
-## Genes in significant slices (Genes folder)
-
-## SNPs shared among married individuals in significant slices (SNPs folder)
 ## Software requirements
 
 ### The following software were used for data analysis:
@@ -60,7 +51,7 @@ The project is licensed under the [BSD 3-Clause license](https://github.com/pysa
 @article{Burghardt2022,
     year      = {2022},
     publisher = {},
-    author    = {Keith Burghardta and Thalida Em Arpawongb and José Luis Ambite},
+    author    = {Keith Burghardt and Thalida Em Arpawong and José Luis Ambite},
     title     = {Shared Genetics Drive Mate Selection},
     journal   = {}
 }
