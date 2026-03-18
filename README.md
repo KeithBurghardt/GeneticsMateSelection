@@ -13,7 +13,9 @@ Python code
 R code
 - bp2cm.r: This code recreates cM values for each SNP and fills in any missing centimorgan values via imputation
 - pca.r: This code determines PCA components from genome data
-- firth_fit.r: This code extracts logistic regression coefficients and p-values for each slice, both with and without controlling for covariates. 
+- firth_fit_hrs.r: This code extracts logistic regression coefficients and p-values for each slice in HRS data, both with and without controlling for covariates.
+- firth_fit_elsa.r: This code extracts logistic regression coefficients and p-values for each slice in ELSA data, both with and without controlling for covariates.
+- firth_synth.r: creates synthetic data uncorrelated with the outcome variable to assess how near-colinearity affects Firth logistic regression fits.
 
 
 ## Software requirements
@@ -48,8 +50,8 @@ The project is licensed under the [BSD 3-Clause license](https://github.com/pysa
 
 ## BibTeX Citation
 ```
-@article{Burghardt2023,
-    year      = {2023},
+@article{Burghardt2026,
+    year      = {2026},
     publisher = {},
     author    = {Keith Burghardt and Thalida Em Arpawong and José Luis Ambite},
     title     = {Shared Genetics Drive Mate Selection},
