@@ -4,10 +4,6 @@ library(fastDummies)
 library(logistf)
 library(data.table)
 library(caret)
-
-# library(base)
-# library(logistf)
-# library(data.table)
 args <- commandArgs(trailingOnly = TRUE)
 if (length(args) > 0){
 	select_slice = args[2]
@@ -29,7 +25,6 @@ one_eth <- ""
 if (one_ethnic == "True"){
 one_eth <- "_one_ethnic"
 }
-#         slice_features = [['chr'+(sf.split('/')[-1]).replace('elsa_slice_','').replace('.csv',''),train80,one_ethnic]  for sf in list(glob('/project/arpawong_181/burghard_687/genetic_data/slices_combined/elsa_slice_*'))]
 dir <- "/project/arpawong_181/HRS_AsMa/keith/ELSA/"
 print("loading data")
 train_outcome <- read.csv(paste(dir,"train_outcome_all_data_fold=-1_heldout.csv",sep=""))
@@ -50,12 +45,6 @@ slice_features <- sapply(file_list, function(sf) {
 })
 slice_features <- sample(slice_features)
 
-#slice_features = read.csv('/project/arpawong_181/HRS_AsMa/keith/ELSA/slice_features_heldout.csv')
-#slice_features <- slice_features$slice
-#slice_features <- sample(slice_features)
-#for (select_slice in slice_features){
-# select_slice <- "chr3_14255206-14255758"
-#print(paste(c("tests_",select_slice,"_test"),collapse=""))
 for (select_slice in slice_features){
 for (abs_features in c(T)){
     for (s in c("full")){ # ,"random","nom")){
@@ -95,43 +84,24 @@ for (abs_features in c(T)){
 	    next
 	}
 
-        #slice_features = read.csv('/project/arpawong_181/HRS_AsMa/keith/ELSA/slice_features_heldout.csv')
-	# directory to collect/store data
-
         print('loading train slice')
-        # train_slice <-read.csv(paste(dir,"slices_all/train_",select_slice,"_all_data_fold=-1_cog27.csv",sep=""))    
         ######## CLUSTER ##########
         slice_file <- paste("/project/arpawong_181/burghard_687/genetic_data/slices_combined/elsa_slice_",gsub("chr", "",select_slice),".csv",sep="")
         #print(slice_file)
         cluster_ids <-read.csv(slice_file)
-        #train_slice <-read.csv(paste("/project/arpawong_181/burghard_687/genetic_data/slices_combined/subject_",select_slice,".csv",sep=""))
-        #ELSA_indices <- read.csv("ELSA_combined_order.csv")$order
-        #print(max(ELSA_indices))
-
-        #zipped <- mapply(list, ELSA_indices, train_slice[1:nrow(train_slice),], SIMPLIFY=F)
-        # default is that all cluster IDs are -1
-        #cluster_ids = rep(-1, nrow(train_X))
-        #print(train_slice[90000:90010,])
         print(max(cluster_ids))
 	if(max(cluster_ids) == -1){next}
-        #train_slice <- train_slice[hrs_indices,]
         # cut off dummy variables
-        #train_slice[train_slice>30] <- 31
         cluster_ids <- data.frame(cluster_ids)
         colnames(cluster_ids) <- c("newclust")
-        #print(colnames(cluster_ids))
-        # dummify the data
         # make dummy/1-hot variables
         cluster_ids <- dummy_cols(cluster_ids)
         dmy_names <- colnames(cluster_ids)
-        #print(dmy_names)
         # only select dummy names
         dmy_names <- dmy_names[2:length(dmy_names)]
-        #print(dmy_names)
         cluster_ids <- select(cluster_ids, dmy_names)
         colnames(cluster_ids) <- gsub("-","minus",gsub("_","",colnames(cluster_ids)))
-        #print(colnames(cluster_ids))
-        # print("STOPPING")
+
 
         # if (length(colnames(cluster_ids))==1 & colnames(cluster_ids)[1] == "newclust-1"){next}
         ###############################
@@ -139,26 +109,6 @@ for (abs_features in c(T)){
         df <- cbind(cbind(train_X,cluster_ids),train_outcome)
         ###############################
 
-        # combine all training features
-        #df <- cbind(cbind(train_X,train_slice),train_outcome)
-
-        ## train_slice <-read.csv(paste(dir,"slices_all/train_",select_slice,"_all_data_fold=-1_heldout.csv",sep=""))
-        #if (select_slice == "None"){
-        #    # make feature 0s (effectively remove parameter)
-        #    train_slice <- as.data.frame(matrix(0,length(train_X),1))
-        #    colnames(train_slice) <- c(c('slice'))
-	#}
-        
-        #if(sum(train_slice$slice)==0){
-        #        print('SLICE IS BAD')
-        #        print(select_slice)
-	#	next
-	#}
-        #print(sum(train_slice$slice))
-        #train_X <- cbind(train_X,train_slice)
-	# num_marriages = length(subset(train_outcome, marriage == 1)$marriage)
-	# combine all training features
-	#df <- cbind(cbind(train_X,train_slice),train_outcome)
         # this ensures all rows are valid
 
         df <-df[complete.cases(df), ]
@@ -173,10 +123,8 @@ for (abs_features in c(T)){
 	y <- "marriage"
 	# create name for slice
         slices <- colnames(df)[grepl("newclust", colnames(df), fixed = TRUE)]
-	#slices <- colnames(df)[grepl("slice", colnames(df), fixed = TRUE)]
 	# name of non-slice features
         covars_list <- colnames(df)[!grepl("newclust", colnames(df), fixed = TRUE)]
-	#covars_list <- colnames(df)[!grepl("slice", colnames(df), fixed = TRUE)]
 	# all relevant feature combinations
         out_dir <- '/project/arpawong_181/burghard_687/genetic_data/'
 	for (covar in covar_combos){
@@ -257,13 +205,7 @@ for (abs_features in c(T)){
             df_lowhigh = data.frame(rbind(c(c("intercept"),covar_features,slices,c("intercept"),covar_features,slices)))
             colnames(df_lowhigh) <- c(c("intercept"),covar_features,slices,c("intercept"),covar_features,slices)
 
-	    #df_coef = data.frame(rbind(c(c("intercept"),covar_features,c("slice"))))
-	    #colnames(df_coef) <- c(c("intercept"),covar_features,c("slice"))
-	    #df_prob = data.frame(rbind(c(c("intercept"),covar_features,c("slice"))))
-	    #colnames(df_prob) <- c(c("intercept"),covar_features,c("slice"))
-	    #df_lowhigh = data.frame(rbind(c(c("intercept"),covar_features,c("slice"),c("intercept"),covar_features,c("slice"))))
-	    #colnames(df_lowhigh) <- c(c("intercept"),covar_features,c("slice"),c("intercept"),covar_features,c("slice"))
-            #print(slices)
+
 	    for (slice in slices) {
                 cleaned_covar_features <- c()
                 for(col in c(covar_features)){
@@ -291,22 +233,11 @@ for (abs_features in c(T)){
             print(cleaned_slices)
             # formulate model
             formula_str <- paste(y, paste(c(cleaned_covar_features,cleaned_slices), collapse=" + "), sep=" ~ ")
-
-                # formulate model
-                #formula_str <- paste(y, paste(c(cleaned_covar_features,slice), collapse=" + "), sep=" ~ ")
                 mymodel <- as.formula(formula_str)
                 print(formula_str)
                 # run logistic regression
-                #tryCatch({
                 lf <- logistf(formula = mymodel,data=df,pl=FALSE)
-		#},error = function(e) {
-                 # ignore coef_file
-                 # ignore prob_file
-		#df_coef <- rbind()
-                #write.csv(df_coef, file =  coef_file)
-		#df_prob <- rbind()
-                #write.csv(df_prob, file = prob_file)
-		#})
+
 		betas <- coef(lf)
                 
 		X <- model.matrix(mymodel, data=df)
